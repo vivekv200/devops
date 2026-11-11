@@ -1,7 +1,6 @@
 pipeline {
     agent any
     triggers { githubPush() }
-
     stages {
         stage('Checkout') {
             steps { checkout scm }
@@ -16,7 +15,6 @@ pipeline {
             steps { bat 'java AppTest' }
         }
     }
-
     post {
         success { echo 'Build stable' }
         failure { echo 'Build failed' }
